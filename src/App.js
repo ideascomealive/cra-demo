@@ -23,15 +23,30 @@ class App extends Component {
         })
     }
 
+    petChangeHandler = (event) => {
+        this.setState({
+            pets: [
+                { name: 'Chance', age: 4 },
+                { name: 'Sassy', age: 14 },
+                { name: event.target.value, age: 14 }            
+            ]
+        })
+    }
+
     //we add a reference to the method in onClick
     render() {
         return (
         <div className="App">
             <h1 className="App-title">Hi Everybody</h1>
             <button onClick={this.switchPetHandler.bind(this, 'Snarf')}>Switch Pet</button>
-            <Pet name={this.state.pets[0].name} age={this.state.pets[0].age} />
-            <Pet name={this.state.pets[1].name} age={this.state.pets[1].age} />
-            <Pet name={this.state.pets[2].name} age={this.state.pets[2].age} click={this.switchPetHandler.bind(this, 'Lionel')} >I am ferocious beast</Pet>
+            <Pet name={this.state.pets[0].name} 
+                age={this.state.pets[0].age} />
+            <Pet name={this.state.pets[1].name} 
+                age={this.state.pets[1].age} />
+            <Pet name={this.state.pets[2].name} 
+                age={this.state.pets[2].age} 
+                click={this.switchPetHandler.bind(this, 'Lionel')}
+                changed={this.petChangeHandler} >I am ferocious beast</Pet>
         </div>
         );
     }
