@@ -10,9 +10,16 @@ class App extends Component {
             { name: 'Sam', age: 10 }            
         ]
     }
-    //method for handling click
+    
     switchPetHandler = () => {
-        console.log('I was clicked');
+        //never mutate state directly example: `this.state.pets = {}` will not work
+        this.setState({
+            pets: [
+                { name: 'Chance', age: 4 },
+                { name: 'Sassy', age: 14 },
+                { name: 'Shadow', age: 14 }            
+            ]
+        })
     }
 
     //we add a reference to the method in onClick
