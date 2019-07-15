@@ -10,12 +10,17 @@ class App extends Component {
             { name: 'Sam', age: 10 }            
         ]
     }
+    //method for handling click
+    switchPetHandler = () => {
+        console.log('I was clicked');
+    }
 
+    //we add a reference to the method in onClick
     render() {
         return (
         <div className="App">
             <h1 className="App-title">Hi Everybody</h1>
-            <button>Switch Pet</button>
+            <button onClick={this.switchPetHandler}>Switch Pet</button>
             <Pet name={this.state.pets[0].name} age={this.state.pets[0].age} />
             <Pet name={this.state.pets[1].name} age={this.state.pets[1].age} />
             <Pet name={this.state.pets[2].name} age={this.state.pets[2].age}>I'm a ferocious beast</Pet>
