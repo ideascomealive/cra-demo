@@ -5,14 +5,13 @@ import Pet from './Pet/Pet';
 class App extends Component {
     state = {
         pets: [
-            { name: 'Houla', age: 14 },
-            { name: 'Casey', age: 12 },
-            { name: 'Sam', age: 10 }            
+            { id: '26834', name: 'Houla', age: 14 },
+            { id: '33764', name: 'Casey', age: 12 },
+            { id: '82743', name: 'Sam', age: 10 }            
         ],
         showPets: false
     }
 
-    //updated to not mutate state directly by using the spread operator to make a copy
     deletePetHandler = (petIndex) => {
         const pets = [...this.state.pets];
         pets.splice(petIndex, 1);
@@ -50,6 +49,7 @@ class App extends Component {
             <div>
               {this.state.pets.map((pet, index) => {
                   return <Pet
+                      key={pet.id}
                       click={() => this.deletePetHandler(index)}
                       name={pet.name}
                       age={pet.age} />
