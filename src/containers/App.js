@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Home from '../components/Home/Home';
 import PetList from '../components/PetList/PetList';
 
 class App extends Component {
@@ -41,15 +42,6 @@ class App extends Component {
     }
 
     render() {
-        const styles = {
-            backgroundColor: 'green',
-            color: 'white',
-            font: 'inherit',
-            border: '1px solid blue',
-            padding: '8px',
-            cursor: 'pointer'
-        };
-        
         let petsRender = null;
 
         if (this.state.showPets) {
@@ -60,27 +52,15 @@ class App extends Component {
                     changed={this.petChangeHandler} />
             </div>
             );
-            styles.backgroundColor = 'red'
         } 
 
-        //create an empty array to hold our class name
-        const classes = [];
-        
-        //check the length of the array and dynamically add classes
-        if (this.state.pets.length <= 2) {
-            classes.push('red');
-        }
-        if (this.state.pets.length <= 1) {
-            classes.push('huge');
-        }
-
-        //add class.join and an empty space to dynamically set className of the h1
         return (
         <div className="App">
-            <h1 className={classes.join(' ')}>Hi Everybody</h1>
-            <button 
-                style={styles}
-                onClick={this.togglePetsHandler}>Toggle Pet</button>
+            <Home
+                showPets = {this.state.showPets}
+                pets={this.state.pets} 
+                clicked={this.togglePetsHandler}
+                />
             {petsRender}
         </div>
         );
