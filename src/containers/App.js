@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Pet from './Pet/Pet';
+import Pet from '../components/PetList/Pet/Pet';
 
 class App extends Component {
     state = {
