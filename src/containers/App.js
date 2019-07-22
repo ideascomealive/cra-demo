@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Pet from '../components/PetList/Pet/Pet';
+import PetList from '../components/PetList/PetList';
 
 class App extends Component {
     state = {
@@ -55,14 +55,9 @@ class App extends Component {
         if (this.state.showPets) {
             petsRender = (
             <div>
-              {this.state.pets.map((pet, index) => {
-                  return <Pet
-                      key={pet.id}
-                      click={() => this.deletePetHandler(index)}
-                      changed={(event) => this.petChangeHandler(event, pet.id)}
-                      name={pet.name}
-                      age={pet.age} />
-              })}
+              <PetList pets={this.state.pets} 
+                    clicked={this.deletePetHandler}
+                    changed={this.petChangeHandler} />
             </div>
             );
             styles.backgroundColor = 'red'
