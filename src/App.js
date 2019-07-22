@@ -48,19 +48,16 @@ class App extends Component {
         
         //start with a default state of null
         let petsRender = null;
-        
+
         //create condition inside the render but outside jsx return
         if (this.state.showPets) {
             petsRender = (
             <div>
-              <Pet name={this.state.pets[0].name} 
-                  age={this.state.pets[0].age} />
-              <Pet name={this.state.pets[1].name} 
-                  age={this.state.pets[1].age} />
-              <Pet name={this.state.pets[2].name} 
-                  age={this.state.pets[2].age} 
-                  click={this.switchPetHandler.bind(this, 'Lionel')}
-                  changed={this.petChangeHandler} >I am ferocious beast</Pet>
+              {this.state.pets.map(pet => {
+                  return <Pet
+                      name={pet.name}
+                      age={pet.age} />
+              })}
             </div>
             );
         } 
