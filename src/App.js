@@ -18,26 +18,20 @@ class App extends Component {
         this.setState({pets: pets});
     }
 
-    //pass in the id from the map method
     petChangeHandler = (event, id) => {
-        //use .findIndex to locate the correct id
         const petIndex = this.state.pets.findIndex(p => {
             return p.id === id;
         });
         
-        //then we can use the spread operator to avoid mutating the state directly through reference
         const pet = {
             ...this.state.pets[petIndex]
         };
 
-        //set the .name value to the event.target.value
         pet.name = event.target.value;
 
-        //create a new pets object and add the new pet value at petIndex without mutating the state directly
         const pets = [...this.state.pets];
         pets[petIndex] = pet;
 
-        //update state.pets with the new pets array
         this.setState({pets: pets});
     }
           
@@ -47,8 +41,10 @@ class App extends Component {
     }
 
     render() {
+        //change background and font default
         const styles = {
-            backgroundColor: 'white',
+            backgroundColor: 'green',
+            color: 'white',
             font: 'inherit',
             border: '1px solid blue',
             padding: '8px',
@@ -70,6 +66,8 @@ class App extends Component {
               })}
             </div>
             );
+            //dynamically change the background color if pets is rendered
+            styles.backgroundColor = 'red'
         } 
 
         return (
