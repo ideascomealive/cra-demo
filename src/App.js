@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Pet from './Pet/Pet';
-//npm i radium and then import
-import Radium from 'radium';
 
 class App extends Component {
     state = {
@@ -49,11 +47,7 @@ class App extends Component {
             font: 'inherit',
             border: '1px solid blue',
             padding: '8px',
-            cursor: 'pointer',
-            ':hover': { //create a :hover using a string as a property name
-                backgroundColor: 'darkgreen',
-                color: 'yellow'
-            }
+            cursor: 'pointer'
         };
         
         let petsRender = null;
@@ -72,15 +66,12 @@ class App extends Component {
             </div>
             );
             styles.backgroundColor = 'red'
-            styles[':hover'] = { //use bracket notation to call the string
-              backgroundColor: 'rebeccapurple',
-              color: 'black'
-            }
         } 
 
-        //24a - adding conditional classnames
+        //create an empty array to hold our class name
         const classes = [];
         
+        //check the length of the array and dynamically add classes
         if (this.state.pets.length <= 2) {
             classes.push('red');
         }
@@ -88,7 +79,7 @@ class App extends Component {
             classes.push('huge');
         }
 
-        //24a add classes.join to header tag
+        //add class.join and an empty space to dynamically set className of the h1
         return (
         <div className="App">
             <h1 className={classes.join(' ')}>Hi Everybody</h1>
@@ -101,5 +92,4 @@ class App extends Component {
     }
 }
 
-//export app by calling Radium like a HOC
-export default Radium(App);
+export default App;
