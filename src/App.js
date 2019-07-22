@@ -11,15 +11,10 @@ class App extends Component {
         ],
         showPets: false
     }
-    
-    switchPetHandler = (newName) => {
-        this.setState({
-            pets: [
-                { name: newName, age: 4 },
-                { name: 'Sassy', age: 14 },
-                { name: 'Shadow', age: 14 }            
-            ]
-        })
+    deletePetHandler = (petIndex) => {
+        const pets = this.state.pets;
+        pets.splice(petIndex, 1);
+        this.setState({pets: pets});
     }
 
     petChangeHandler = (event) => {
@@ -46,15 +41,14 @@ class App extends Component {
             cursor: 'pointer'
         };
         
-        //start with a default state of null
         let petsRender = null;
 
-        //create condition inside the render but outside jsx return
         if (this.state.showPets) {
             petsRender = (
             <div>
-              {this.state.pets.map(pet => {
+              {this.state.pets.map((pet, index) => {
                   return <Pet
+                      click={() => this.deletePetHandler(index)}
                       name={pet.name}
                       age={pet.age} />
               })}
