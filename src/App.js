@@ -1,4 +1,3 @@
-//import useState instead of component
 import React, { Component } from 'react';
 import './App.css';
 import Pet from './Pet/Pet';
@@ -10,7 +9,7 @@ class App extends Component {
             { name: 'Casey', age: 12 },
             { name: 'Sam', age: 10 }            
         ],
-        showPets: false //hide/show boolean
+        showPets: false
     }
     
     switchPetHandler = (newName) => {
@@ -33,12 +32,10 @@ class App extends Component {
         })
     }
           
-    //Using => arrow syntax binds `this`
     togglePetsHandler = () => {
       const show = this.state.showPets;
       this.setState({showPets: !show});
     }
-    //with setState, state merges
 
     render() {
         const styles = {
@@ -48,14 +45,11 @@ class App extends Component {
             padding: '8px',
             cursor: 'pointer'
         };
-
-        return (
-        <div className="App">
-            <h1 className="App-title">Hi Everybody</h1>
-            <button 
-                style={styles}
-                onClick={this.togglePetsHandler}>Switch Pet</button>
-          {this.state.showPets ? 
+        
+        //create condition inside the render but outside jsx return
+        let petsRender = null;
+        if (this.state.showPets) {
+            petsRender = (
             <div>
               <Pet name={this.state.pets[0].name} 
                   age={this.state.pets[0].age} />
@@ -65,8 +59,17 @@ class App extends Component {
                   age={this.state.pets[2].age} 
                   click={this.switchPetHandler.bind(this, 'Lionel')}
                   changed={this.petChangeHandler} >I am ferocious beast</Pet>
-            </div> : null
-          }
+            </div>
+            );
+        } 
+
+        return (
+        <div className="App">
+            <h1 className="App-title">Hi Everybody</h1>
+            <button 
+                style={styles}
+                onClick={this.togglePetsHandler}>Switch Pet</button>
+            {petsRender}
         </div>
         );
     }
