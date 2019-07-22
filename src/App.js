@@ -11,8 +11,10 @@ class App extends Component {
         ],
         showPets: false
     }
+
+    //updated to not mutate state directly by using the spread operator to make a copy
     deletePetHandler = (petIndex) => {
-        const pets = this.state.pets;
+        const pets = [...this.state.pets];
         pets.splice(petIndex, 1);
         this.setState({pets: pets});
     }
