@@ -18,14 +18,27 @@ class App extends Component {
         this.setState({pets: pets});
     }
 
-    petChangeHandler = (event) => {
-        this.setState({
-            pets: [
-                { name: 'Chance', age: 4 },
-                { name: 'Sassy', age: 14 },
-                { name: event.target.value, age: 14 }            
-            ]
-        })
+    //pass in the id from the map method
+    petChangeHandler = (event, id) => {
+        //use .findIndex to locate the correct id
+        const petIndex = this.state.pets.findIndex(p => {
+            return p.id === id;
+        });
+        
+        //then we can use the spread operator to avoid mutating the state directly through reference
+        const pet = {
+            ...this.state.pets[petIndex]
+        };
+
+        //set the .name value to the event.target.value
+        pet.name = event.target.value;
+
+        //create a new pets object and add the new pet value at petIndex without mutating the state directly
+        const pets = [...this.state.pets];
+        pets[petIndex] = pet;
+
+        //update state.pets with the new pets array
+        this.setState({pets: pets});
     }
           
     togglePetsHandler = () => {
@@ -51,6 +64,7 @@ class App extends Component {
                   return <Pet
                       key={pet.id}
                       click={() => this.deletePetHandler(index)}
+                      changed={(event) => this.petChangeHandler(event, pet.id)}
                       name={pet.name}
                       age={pet.age} />
               })}
@@ -63,7 +77,7 @@ class App extends Component {
             <h1 className="App-title">Hi Everybody</h1>
             <button 
                 style={styles}
-                onClick={this.togglePetsHandler}>Switch Pet</button>
+                onClick={this.togglePetsHandler}>Toggle Pet</button>
             {petsRender}
         </div>
         );
