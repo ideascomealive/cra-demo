@@ -46,8 +46,10 @@ class App extends Component {
             cursor: 'pointer'
         };
         
-        //create condition inside the render but outside jsx return
+        //start with a default state of null
         let petsRender = null;
+        
+        //create condition inside the render but outside jsx return
         if (this.state.showPets) {
             petsRender = (
             <div>
