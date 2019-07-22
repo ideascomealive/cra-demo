@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Pet from './Pet/Pet';
+//npm i radium and then import
+import Radium from 'radium';
 
 class App extends Component {
     state = {
@@ -41,14 +43,17 @@ class App extends Component {
     }
 
     render() {
-        //change background and font default
         const styles = {
             backgroundColor: 'green',
             color: 'white',
             font: 'inherit',
             border: '1px solid blue',
             padding: '8px',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            ':hover': { //create a :hover using a string as a property name
+                backgroundColor: 'darkgreen',
+                color: 'yellow'
+            }
         };
         
         let petsRender = null;
@@ -66,13 +71,27 @@ class App extends Component {
               })}
             </div>
             );
-            //dynamically change the background color if pets is rendered
             styles.backgroundColor = 'red'
+            styles[':hover'] = { //use bracket notation to call the string
+              backgroundColor: 'rebeccapurple',
+              color: 'black'
+            }
         } 
 
+        //24a - adding conditional classnames
+        const classes = [];
+        
+        if (this.state.pets.length <= 2) {
+            classes.push('red');
+        }
+        if (this.state.pets.length <= 1) {
+            classes.push('huge');
+        }
+
+        //24a add classes.join to header tag
         return (
         <div className="App">
-            <h1 className="App-title">Hi Everybody</h1>
+            <h1 className={classes.join(' ')}>Hi Everybody</h1>
             <button 
                 style={styles}
                 onClick={this.togglePetsHandler}>Toggle Pet</button>
@@ -82,4 +101,5 @@ class App extends Component {
     }
 }
 
-export default App;
+//export app by calling Radium like a HOC
+export default Radium(App);

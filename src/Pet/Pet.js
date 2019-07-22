@@ -1,5 +1,7 @@
 import React from 'react';
 import './Pet.css';
+//import radium
+import Radium from 'radium';
 
 const pet = (props) => {
     return (
@@ -11,4 +13,5 @@ const pet = (props) => {
     )
 };
 
-export default pet;
+//export pet call radium 
+export default Radium(pet);
