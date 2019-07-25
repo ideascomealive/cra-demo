@@ -23,10 +23,10 @@ const Home = (props) => {
         classes.push('huge');
     }
     
-
+    //use title in h1
     return ( 
     <div>
-      <h1 className={classes.join(' ')}>Hi Everybody</h1>
+      <h1 className={classes.join(' ')}>{props.title}</h1>
       <button 
             style={styles}
           onClick={props.clicked}>Toggle Pet</button>

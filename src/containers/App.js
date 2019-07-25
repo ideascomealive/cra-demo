@@ -54,9 +54,11 @@ class App extends Component {
             );
         } 
 
+        //pass title directly to Home
         return (
         <div className="App">
             <Home
+                title={this.props.title}
                 showPets = {this.state.showPets}
                 pets={this.state.pets} 
                 clicked={this.togglePetsHandler}
