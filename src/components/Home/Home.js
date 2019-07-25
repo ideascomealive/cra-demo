@@ -23,7 +23,6 @@ const Home = (props) => {
         classes.push('huge');
     }
     
-    //use title in h1
     return ( 
     <div>
       <h1 className={classes.join(' ')}>{props.title}</h1>
