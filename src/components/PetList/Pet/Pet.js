@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Pet.css';
 
-//converted to class syntax, needs {Component} import, render method and this.props.NAME changes
 class Pet extends Component {
   render() {
   console.log('Child Components rendering')
