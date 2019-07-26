@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Pet.css';
 
-const pet = (props) => {
-  //child component render
+//converted to class syntax, needs {Component} import, render method and this.props.NAME changes
+class Pet extends Component {
+  render() {
   console.log('Child Components rendering')
     return (
       <div className="Pet">
-        <p onClick={props.click}>My name is {props.name} and I'm {props.age} years old.</p>
-        <p>{props.children}</p>
-        <input type="text" onChange={props.changed} value={props.name} />
+        <p onClick={this.props.click}>My name is {this.props.name} and I'm {this.props.age} years old.</p>
+        <p>{this.props.children}</p>
+        <input type="text" onChange={this.props.changed} value={this.props.name} />
       </div>
-    )
-};
+    );
+  }
+}
 
-export default pet;
+
+export default Pet;

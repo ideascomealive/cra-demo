@@ -5,15 +5,11 @@ import PetList from '../components/PetList/PetList';
 
 class App extends Component {
 
-    //add the constructor method
     constructor(props) {
-        //call super to access this in constructor - super keyword refers to parent class prototype
         super(props);
         console.log('App.js constructor!')
     }
     
-    //we could move our state into our constructor and initialize like this.state = {} 
-    //we can leave it because we are using ES7 syntax which builds the contructor and calls super(props) for us
     state = {
         pets: [
             { id: '26834', name: 'Houla', age: 14 },
@@ -23,13 +19,11 @@ class App extends Component {
         showPets: false
     }
 
-    //static method getDerivedStateFromProps
     static getDerivedStateFromProps(props, state) {
         console.log('getDerivedStateFromProps', props);
         return state;
     }
 
-    //componentDidMount
     componentDidMount() {
         console.log('componentDidMount');
     }
@@ -63,7 +57,6 @@ class App extends Component {
     }
 
     render() {
-    // render method runs
     console.log('Render')
         let petsRender = null;
 
