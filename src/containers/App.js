@@ -24,8 +24,21 @@ class App extends Component {
         return state;
     }
 
+    //componentDidMount, shouldComponentUpdate, and componentDidUpdate are the most commonly used lifecycle methods
     componentDidMount() {
         console.log('componentDidMount');
+    }
+    
+    //shouldComponentUpdate added to App.js
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('App.js shouldComponentUpdate');
+        //if we returned false or undefined it will not render the list
+        return true;
+    }
+
+    //componentDidUpdate added to App.js
+    componentDidUpdate() {
+        console.log('App.js componentDidUpdate');
     }
 
     deletePetHandler = (petIndex) => {
