@@ -4,13 +4,20 @@ import './Home.css';
 const Home = (props) => {
 
     useEffect(() => {
-        console.log('Home.js useEffect');
-        //fake a http request
+        console.log('Home.js useEffect - update render');
         setTimeout(() => {
-            //useEffect runs at every render, but maybe I want to control when it runs
-            alert('Home.js http request finished');
+            alert('Home.js http request finished - update render');
         }, 1000);
-    });
+    }, [props.pets]); //we added a second param to useEffect to only run when props.pets changes
+    
+    //you can have multiple useEffect()'s
+    useEffect(() => {
+        console.log('Home.js useEffect - creation render');
+        setTimeout(() => {
+            alert('Home.js http request finished - creation render');
+        }, 1000);
+    }, []); //an empty array will restrict useEffect() to the first render
+
     const styles = {
         backgroundColor: 'green',
         color: 'white',
