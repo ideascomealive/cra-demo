@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Home from '../components/Home/Home';
 import PetList from '../components/PetList/PetList';
+//import WithClass HOC
+import WithClass from '../hoc/WithClass';
 
 class App extends Component {
 
@@ -81,7 +83,8 @@ class App extends Component {
         } 
 
         return (
-        <div className="App">
+        <WithClass classes={'App'}>
+            {/* could be used for passing the styles with the component - css modules*/}
         <button onClick={ () => {
             this.setState({ showHome: false });
         }}>Remove Home</button>
@@ -96,7 +99,7 @@ class App extends Component {
                 
                 ) : null}
             {petsRender}
-        </div>
+        </WithClass>
         );
     }
 }
