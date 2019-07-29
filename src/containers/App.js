@@ -85,11 +85,12 @@ class App extends Component {
         <button onClick={ () => {
             this.setState({ showHome: false });
         }}>Remove Home</button>
+        {/* Change prop to petsLength and only provide the length */}
         {this.state.showHome ? ( 
-            <Home
+            <Home 
                 title={this.props.title}
                 showPets = {this.state.showPets}
-                pets={this.state.pets} 
+                petsLength={this.state.petsLength} 
                 clicked={this.togglePetsHandler}
                 />
                 

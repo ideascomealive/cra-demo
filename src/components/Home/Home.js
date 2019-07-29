@@ -16,14 +16,12 @@ const Home = (props) => {
             alert('Home.js http request finished - creation render');
         }, 1000);
 
-        //unmount cleanup - if I return I can run a function after the component is destroyed
         return () => {
             console.log('Home.js useEffect - unmount cleanup work ')
         };
     }, []); 
     
     useEffect(() => {
-        //unmount cleanup - if I return with no second parameter I can run a function after any component is destroyed
         return () => {
             console.log('Home.js useEffect - all cleanup work ')
         };
@@ -43,10 +41,12 @@ const Home = (props) => {
     }
     const classes = [];
     
-    if (props.pets.length <= 2) {
+    //we only need to re-render when the length updates
+    //we use the new prop - petsLength
+    if (props.petsLength <= 2) {
         classes.push('red');
     }
-    if (props.pets.length <= 1) {
+    if (props.petsLength <= 1) {
         classes.push('huge');
     }
     
@@ -60,4 +60,5 @@ const Home = (props) => {
     );
 };
 
-export default Home;
+//use React.memo() to memoize a snapshot of the component
+export default React.memo(Home);
