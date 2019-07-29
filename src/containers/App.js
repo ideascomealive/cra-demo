@@ -7,7 +7,7 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        console.log('App.js constructor!')
+        console.log('App.js constructor')
     }
     
     state = {
@@ -20,23 +20,19 @@ class App extends Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        console.log('getDerivedStateFromProps', props);
+        console.log('App.js getDerivedStateFromProps', props);
         return state;
     }
 
-    //componentDidMount, shouldComponentUpdate, and componentDidUpdate are the most commonly used lifecycle methods
     componentDidMount() {
-        console.log('componentDidMount');
+        console.log('App.js componentDidMount');
     }
     
-    //shouldComponentUpdate added to App.js
     shouldComponentUpdate(nextProps, nextState) {
         console.log('App.js shouldComponentUpdate');
-        //if we returned false or undefined it will not render the list
         return true;
     }
 
-    //componentDidUpdate added to App.js
     componentDidUpdate() {
         console.log('App.js componentDidUpdate');
     }

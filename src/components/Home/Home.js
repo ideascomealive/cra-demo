@@ -1,7 +1,14 @@
-import React from 'react';
+//added useEffect to import
+import React, { useEffect } from 'react';
 import './Home.css';
 
 const Home = (props) => {
+
+    //added useEffect()
+    useEffect(() => {
+        console.log('Home.js useEffect');
+        //we can execute side effect like a http request
+    });
     const styles = {
         backgroundColor: 'green',
         color: 'white',
