@@ -1,13 +1,15 @@
-//added useEffect to import
 import React, { useEffect } from 'react';
 import './Home.css';
 
 const Home = (props) => {
 
-    //added useEffect()
     useEffect(() => {
         console.log('Home.js useEffect');
-        //we can execute side effect like a http request
+        //fake a http request
+        setTimeout(() => {
+            //useEffect runs at every render, but maybe I want to control when it runs
+            alert('Home.js http request finished');
+        }, 1000);
     });
     const styles = {
         backgroundColor: 'green',
