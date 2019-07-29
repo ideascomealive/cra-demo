@@ -10,8 +10,6 @@ class PetList extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     console.log('PetList - shouldComponentUpdate');
     
-    //we only allow a re-render if pets is updated
-    //this only works because we used the rest operator to build a new reference
     if (nextProps.pets !== this.props.pets) {
         return true;
     } else {    

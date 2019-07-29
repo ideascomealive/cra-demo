@@ -41,8 +41,6 @@ const Home = (props) => {
     }
     const classes = [];
     
-    //we only need to re-render when the length updates
-    //we use the new prop - petsLength
     if (props.petsLength <= 2) {
         classes.push('red');
     }
@@ -60,5 +58,4 @@ const Home = (props) => {
     );
 };
 
-//use React.memo() to memoize a snapshot of the component
 export default React.memo(Home);

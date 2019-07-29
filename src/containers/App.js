@@ -84,11 +84,9 @@ class App extends Component {
 
         return (
         <WithClass classes={'App'}>
-            {/* could be used for passing the styles with the component - css modules*/}
         <button onClick={ () => {
             this.setState({ showHome: false });
         }}>Remove Home</button>
-        {/* Change prop to petsLength and only provide the length */}
         {this.state.showHome ? ( 
             <Home 
                 title={this.props.title}
