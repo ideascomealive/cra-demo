@@ -3,16 +3,12 @@ import Wrapper from '../../../hoc/Wrapper';
 import './Pet.css';
 
 class Pet extends Component {
-  //add constructor to create a ref
   constructor(props) {
     super();
-    //React.createRef
     this.inputElementRef = React.createRef();
   }
 
-  //reference from constructor and React.createRe(); - inputElementRef
   componentDidMount() {
-    //add .current for current element
     this.inputElementRef.current.focus();
   }
   render() {
@@ -23,7 +19,6 @@ class Pet extends Component {
         <p>{this.props.children}</p>
         <input 
         type="text" 
-        // ref={(inputEl) => {this.inputElement = inputEl}} //removed other ref
         ref={this.inputElementRef}
         onChange={this.props.changed} 
         value={this.props.name} />

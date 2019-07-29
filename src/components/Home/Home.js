@@ -1,7 +1,12 @@
-import React, { useEffect } from 'react';
+//imported useRef to create functional refs
+import React, { useEffect, useRef } from 'react';
 import './Home.css';
 
 const Home = (props) => {
+
+    //set up my ref using useRef hook - it will auto click the button :) - null as an initial value
+    const toggleBtnRef = useRef(null);
+    //toggleBtnRef.current.click(); // if it is run the click here it will throw an error because it has not rendered yet
 
     useEffect(() => {
         console.log('Home.js useEffect - update render');
@@ -12,9 +17,12 @@ const Home = (props) => {
     
     useEffect(() => {
         console.log('Home.js useEffect - creation render');
-        setTimeout(() => {
-            alert('Home.js http request finished - creation render');
-        }, 1000);
+        // not using in favor of button click
+        // setTimeout(() => {
+        //     alert('Home.js http request finished - creation render');
+        // }, 1000);
+        // will only run after first creation so we add the click to the ref
+        toggleBtnRef.current.click();
 
         return () => {
             console.log('Home.js useEffect - unmount cleanup work ')
@@ -52,8 +60,9 @@ const Home = (props) => {
     <div>
       <h1 className={classes.join(' ')}>{props.title}</h1>
       <button 
-            style={styles}
+          style={styles}
           onClick={props.clicked}>Toggle Pet</button>
+          ref={toggleBtnRef}
       </div>
     );
 };
