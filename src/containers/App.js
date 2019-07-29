@@ -16,7 +16,8 @@ class App extends Component {
             { id: '33764', name: 'Casey', age: 12 },
             { id: '82743', name: 'Sam', age: 10 }            
         ],
-        showPets: false
+        showPets: false,
+        showHome: true,
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -81,12 +82,18 @@ class App extends Component {
 
         return (
         <div className="App">
+        <button onClick={ () => {
+            this.setState({ showHome: false });
+        }}>Remove Home</button>
+        {this.state.showHome ? ( 
             <Home
                 title={this.props.title}
                 showPets = {this.state.showPets}
                 pets={this.state.pets} 
                 clicked={this.togglePetsHandler}
                 />
+                
+                ) : null}
             {petsRender}
         </div>
         );

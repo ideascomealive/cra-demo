@@ -8,15 +8,26 @@ const Home = (props) => {
         setTimeout(() => {
             alert('Home.js http request finished - update render');
         }, 1000);
-    }, [props.pets]); //we added a second param to useEffect to only run when props.pets changes
+    }, [props.pets]);
     
-    //you can have multiple useEffect()'s
     useEffect(() => {
         console.log('Home.js useEffect - creation render');
         setTimeout(() => {
             alert('Home.js http request finished - creation render');
         }, 1000);
-    }, []); //an empty array will restrict useEffect() to the first render
+
+        //unmount cleanup - if I return I can run a function after the component is destroyed
+        return () => {
+            console.log('Home.js useEffect - unmount cleanup work ')
+        };
+    }, []); 
+    
+    useEffect(() => {
+        //unmount cleanup - if I return with no second parameter I can run a function after any component is destroyed
+        return () => {
+            console.log('Home.js useEffect - all cleanup work ')
+        };
+    }); 
 
     const styles = {
         backgroundColor: 'green',
